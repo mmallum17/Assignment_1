@@ -15,12 +15,14 @@ int main()
     int numberCorrect = 0;
     int correct = 0;
 
+    /* Prompt user for how many questions for test and validate */
     do
     {
         printf("%s", "How many questions for this test (1-20)? ");
         scanf("%d", &numberOfQuestions);
     }while(numberOfQuestions < 1 || numberOfQuestions > 20);
 
+    /* Prompt user for difficulty and validate */
     do
     {
         printf("%s", "Select difficulty (1-4): ");
@@ -28,6 +30,8 @@ int main()
     }while(questionDifficulty < 1 || questionDifficulty > 4);
 
     srand(time(NULL));
+
+    /* Generate Question, get response, and say whether correct or not */
     for(questionNumber = 1; questionNumber <= numberOfQuestions; questionNumber++)
     {
         correctAnswer = genQuestion(questionDifficulty);
@@ -38,6 +42,8 @@ int main()
         }
         response(correct);
     }
+
+    /* Give final score */
     printf("Your score was %d/%d\n", numberCorrect, numberOfQuestions);
     return 0;
 }
@@ -52,7 +58,7 @@ int genQuestion(int difficulty)
     int operand1 = 0;
     int operand2 = 0;
 
-    printf("Question %d: ", questionNum++);
+    /* Find range of values based on difficulty */
     switch (difficulty)
     {
         case 1:
@@ -76,9 +82,13 @@ int genQuestion(int difficulty)
             break;
     }
 
+    /* Get random operands and operator */
     operand1 = rand() % (max - min + 1) + min;
     operand2 = rand() % (max - min + 1) + min;
     operator = rand() % 4;
+
+    /* Print the question */
+    printf("Question %d: ", questionNum++);
     switch (operator)
     {
         case 0:
@@ -118,9 +128,7 @@ int answerQuestion(int correctAnswer)
 
 void response(int correct)
 {
-    int responseNumber;
-/*    srand(time(NULL));*/
-    responseNumber = rand() % 3;
+    int responseNumber = rand() % 3;
     if(correct)
     {
         switch (responseNumber)
