@@ -36,11 +36,15 @@ int main()
     {
         correctAnswer = genQuestion(questionDifficulty);
         correct = answerQuestion(correctAnswer);
+        response(correct);
         if(correct)
         {
             numberCorrect++;
         }
-        response(correct);
+        else
+        {
+            printf("The correct answer was %d\n", correctAnswer);
+        }
     }
 
     /* Give final score */
