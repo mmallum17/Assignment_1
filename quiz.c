@@ -6,7 +6,7 @@ int genQuestion(int difficulty);
 int answerQuestion(int correctAnswer);
 void response(int correct);
 
-int main()
+int main(void)
 {
     int numberOfQuestions = 0;
     int questionDifficulty = 0;
